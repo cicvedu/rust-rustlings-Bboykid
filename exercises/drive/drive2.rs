@@ -3,7 +3,6 @@
 // Execute `rustlings hint drive1` or use the `hint` watch subcommand for a
 // hint.
 
-// I AM NOT DONE
 
 
 struct Foo {
@@ -12,10 +11,19 @@ struct Foo {
 }
 
 fn raw_pointer_to_box(address: usize) -> Box<Foo> {
-    // address is a pointer that points to heap.
-    // construct Box from this address, and modify Foo's b field to 
-    // the string "hello"
+    // Convert the address back to a mutable reference of Foo
+    let ptr = address as *mut Foo;
+
+    // Create a Box by "reclaiming" the ownership of the data
+    let mut boxed_foo = unsafe { Box::from_raw(ptr) };
+
+    // Modify the 'b' field of Foo
+    boxed_foo.b = Some("hello".to_owned());
+
+    // Return the modified Box<Foo>
+    boxed_foo
 }
+
 
 
 #[cfg(test)]
