@@ -6,7 +6,6 @@
 // return values into a vector.
 //
 // Execute `rustlings hint threads1` or use the `hint` watch subcommand for a
-// hint.
 
 // I AM NOT DONE
 
